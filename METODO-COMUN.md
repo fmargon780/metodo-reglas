@@ -138,7 +138,14 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
 6. **La cola no pierde filas.** Antes de escribir en `docs/COLA.md`, baja `main`. Después de
    subir, comprueba que siguen todas las filas que había. Si falta alguna, la recuperas antes de
    seguir.
-7. Tiempo: no se estima. Al marcar HECHA se escribe la hora de Madrid: `HECHA (26-oct-2026 14:05)`;
+7. **Cómo se sube** (salvo que el `CLAUDE.md` de la app diga otra cosa, por ejemplo una rama por
+   fila): directo a `main`, con `git pull --rebase origin main` y `git push origin HEAD:main`. Si
+   git rechaza la subida a `main`, se sube a la rama `claude/...`, se abre una petición de cambios
+   y se fusiona en ese momento (`merge_pull_request`), sin esperar a nadie: nunca se deja una
+   abierta. Nunca se sube código con las herramientas de ficheros de GitHub (`create_or_update_file`,
+   `push_files`): los ficheros grandes se cortan. Si git no puede subir de ninguna manera, la fila
+   se queda EN CURSO y se dice en el mensaje final.
+8. Tiempo: no se estima. Al marcar HECHA se escribe la hora de Madrid: `HECHA (26-oct-2026 14:05)`;
    lo que tardó cada fila sale de esa hora y de la subida que la marcó EN CURSO.
 
 ## 6. Segundo revisor, comprobar y publicar
@@ -169,8 +176,10 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
 5. **Una fila solo es HECHA cuando está en `main`, publicada y comprobada** en la dirección real.
    Después de publicar, el revisor (o la sesión, en una tarea pequeña) mira la app publicada si
    puede entrar; si no puede, lo deja escrito. Si no se puede comprobar la publicación por una
-   causa ajena, queda SIN PUBLICACIÓN COMPROBADA y el mensaje final empieza con «AVISO: no he
-   podido comprobar que los cambios estén publicados.»
+   causa ajena, queda SIN PUBLICACIÓN COMPROBADA, con el motivo en una línea, no se empieza otra
+   fila (salvo que el `CLAUDE.md` de la app diga que la cola sigue) y el mensaje final empieza con
+   «AVISO: no he podido comprobar que los cambios estén publicados.» «En verde», en un mensaje a la
+   persona, solo se dice si la publicación también lo está.
 6. Al empezar cada sesión, lo primero es comprobar que la última publicación salió bien. Si está
    rota por nuestro código, arreglarla es lo único que se hace.
 7. Una publicación por tarea. Cómo se publica en esta app lo dice su `CLAUDE.md`.
