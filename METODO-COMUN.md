@@ -255,7 +255,7 @@ y para el Centro de mando.
 | `ESPERA A LA IDEA M` | No puede terminarse hasta que la fila M esté HECHA (apartado 9) | Claude Code |
 | `EN CURSO` | Una sesión la está programando | Claude Code |
 | `ESPERA TU VISTAZO` | Programada y a la vista en una dirección de prueba; no se publica hasta que la persona la mire. Solo en las apps cuyo `CLAUDE.md` trabaja así | Claude Code |
-| `HECHA (fecha hora)` | En `main`, publicada y comprobada | Claude Code |
+| `HECHA (fecha hora)` | En `main`, publicada y comprobada. Cuando la persona la mira y está bien, la nota lleva «mirada (fecha)» (botón «Bien» del Centro de mando); hasta entonces, y como mucho siete días, sale en «Para probar» | Claude Code |
 | `SIN PUBLICACIÓN COMPROBADA` | Terminada, pero no se pudo comprobar la publicación (apartado 6.5) | Claude Code |
 | `BLOQUEADA` | Parada. La nota empieza por «PREGUNTA PARA <nombre>», «ATASCO PARA CLAUDE» o «FALTA UN PERMISO» (apartado 3) | Claude Code |
 | `DEVUELTA` | La persona miró la app y no es lo acordado. La nota dice qué falla | La persona, o Claude en su nombre |
@@ -274,9 +274,12 @@ Una sesión puede hacer varias filas seguidas si el encargo las nombra (decidido
 1. De una en una y en el orden del encargo; nunca dos a la vez. Cada fila se marca EN CURSO, se
    hace y se termina como cualquier otra (segundo revisor si es grande, publicada, comprobada y
    HECHA) antes de pasar a la siguiente. No se coge ninguna fila que el encargo no nombre.
-2. **`docs/PARAR.md`.** Antes de la primera fila, si existe, se escribe en él solo «SEGUIR» y se
-   sube. Antes de empezar cada fila nueva se baja `main` y se mira: si dice «PARAR», se cambia a
-   «SEGUIR», se sube y no se empieza ninguna fila más.
+2. **`docs/PARAR.md`.** Antes de la primera fila se escribe en él «SEGUIR · filas N, M y P», con
+   las filas del encargo en su orden, y se sube; si no existe, se crea. El Centro de mando lo lee
+   para enseñar la tanda. Antes de empezar cada fila nueva se baja `main` y se mira: si dice
+   «PARAR», se cambia a «SEGUIR · filas N, M y P» (las mismas filas), se sube y no se empieza
+   ninguna fila más. Si la serie se para por otra causa (punto 3), la línea se queda como está.
+   Solo cuando se han hecho todas las filas se deja «SEGUIR» solo.
 3. **La serie se para del todo** solo en estos casos: una fila queda BLOQUEADA con «PREGUNTA
    PARA», hace falta algo que solo puede hacer la persona, o la publicación sale rota por nuestro
    código. Las filas que falten siguen en la cola como estaban.
