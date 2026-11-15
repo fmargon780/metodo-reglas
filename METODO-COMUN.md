@@ -28,8 +28,9 @@ La primera orden de cada sesión, antes de leer nada más, desde la raíz del re
 ## 1. Al empezar cada sesión: qué fila y en qué orden
 
 **Qué fila se hace.** La que nombra el encargo («haz la fila 214»), o las que nombra, en ese
-orden (una serie, apartado 8). Si el encargo no nombra ninguna: la primera fila DEVUELTA o
-PENDIENTE, en el orden de la cola, saltando las que no son trabajo (apartado 7). Ninguna otra.
+orden (una serie, apartado 8), o lo que la persona diga después en la misma sesión (apartado
+10). Si el encargo no nombra ninguna: la primera fila DEVUELTA o PENDIENTE, en el orden de la
+cola, saltando las que no son trabajo (apartado 7). Ninguna otra.
 
 **El orden.** Cada paso va antes que el siguiente:
 
@@ -41,7 +42,7 @@ PENDIENTE, en el orden de la cola, saltando las que no son trabajo (apartado 7).
    lo único que se hace.
 4. Marcar la fila EN CURSO y subir ese cambio a `main`, antes de leer su instrucción o el código.
    Así se ve que hay una sesión trabajando.
-5. Si la app es de pasada larga y hoy no se ha hecho, la pasada completa (apartado 5.1).
+5. Si la app es de pasada larga y hoy no se ha hecho, la pasada del día (apartado 5.1).
 6. Leer solo esto: `docs/LECCIONES.md` de la app; la tabla «Lecciones para Claude Code» de este
    fichero; `docs/CONTEXTO-CORTO.md` (o `docs/CONTEXTO.md` si la app no tiene el corto); y la
    instrucción de la fila con su pantalla de prueba (`docs/pantallas/<nº>.html`), si la tiene.
@@ -99,6 +100,10 @@ reglas o `.github/workflows`, no se buscan rodeos ni se reintenta. El cambio que
 se deja escrito en un documento de `docs/`. La fila pasa a BLOQUEADA con «FALTA UN PERMISO:
 <cuál, y qué frase tiene que escribir la persona para darlo>». Sigue como en B.
 
+**D. Tercer arreglo del mismo fallo.** Antes de empezar una fila DEVUELTA, o una que arregla lo
+que hizo otra («de la fila N»), apartado 3 de `CUANDO-HACE-FALTA.md` (cómo se baja: final del
+apartado 5).
+
 Al bloquear una fila, el código a medias no se sube a `main`; lo único que se sube es la fila de
 `docs/COLA.md` con su estado nuevo.
 
@@ -121,28 +126,14 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
 ## 5. Ahorro de tiempo y de cuota
 
 1. **Pruebas parciales mientras se trabaja** (solo lo tocado, con la orden que diga `CLAUDE.md`).
-   **La pasada completa, una vez justo antes de subir; si tarda más de 10 minutos, una vez al día**
-   (norma de Francisco, 22-oct-2026):
-   - `docs/PASADA-DIARIA.md` guarda una sola línea viva, que se sustituye cada vez:
-     `Última pasada completa: <fecha y hora de Madrid> · <minutos> min · <verde | con fallos> · commit <sha corto de main>`.
-     Si no existe, la primera sesión que haga una pasada completa lo crea.
-   - **Pasada corta** (10 minutos o menos, o sin dato todavía): la completa, una vez justo antes de
-     subir. Al terminarla se apunta cuánto ha tardado.
-   - **Pasada larga** (más de 10 minutos): al empezar la sesión (paso 5 del apartado 1), si la
-     fecha apuntada no es la de hoy (hora de Madrid), se hace la pasada completa sobre `main`
-     recién bajado, antes de tocar el código de la fila, y se apunta el resultado. Si una prueba
-     falla, se repite a solas: si a solas pasa, es fallo de carga, se apunta en una línea y no
-     cuenta; si también falla, se añade la fila «Arreglar la prueba <nombre>, que falla en la
-     pasada diaria del <fecha>» encima de todas las PENDIENTE y DEVUELTA, la fila que se había
-     marcado vuelve a PENDIENTE y esta sesión trabaja la del arreglo. Durante la fila, solo
-     las pruebas de lo tocado y las fijas que obligue `CLAUDE.md`; no se repite la pasada completa
-     antes de subir. Si la sesión hace varias filas seguidas, una sola pasada, al principio. Si en
-     el día no se lanza ninguna fila, no hay pasada.
-   - El mensaje final de la primera fila del día empieza con «Pasada completa del día: <minutos>
-     min, <sin fallos | con N fallos, arreglo apuntado el primero>.»; las demás no la mencionan.
-   - La frontera de 10 minutos se mira siempre con la última medida.
-   - Si en la pasada falla una prueba que no tiene que ver con el cambio y a solas pasa, se aparta,
-     se dice en una línea de la nota y se sigue. Nunca se sube con pruebas en rojo.
+   **La pasada completa, una vez justo antes de subir** (norma de Francisco, 22-oct-2026). Al
+   terminarla, se sustituye la única línea de `docs/PASADA-DIARIA.md` (si no existe, se crea):
+   `Última pasada completa: <fecha y hora de Madrid> · <minutos> min · <verde | con fallos> · commit <sha corto de main>`.
+   - **Pasada larga:** si esa línea dice más de 10 minutos, la app es de pasada larga y la pasada
+     va una vez al día, al empezar. Cómo: apartado 1 de `CUANDO-HACE-FALTA.md` (abajo). Las demás
+     apps no lo leen.
+   - Si falla una prueba que no tiene que ver con el cambio y a solas pasa, se aparta, se dice en
+     una línea de la nota y se sigue. Nunca se sube con pruebas en rojo.
 2. No se espera ni se persigue a GitHub Actions si solo pasa pruebas, salvo que la publicación
    misma vaya por ahí.
 3. Como mucho tres subidas por fila (EN CURSO, el cambio, HECHA), nunca fichero a fichero.
@@ -153,18 +144,9 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
 5. **Tamaño de la cola y del resumen.** `docs/COLA.md` no pasa de 40 KB (40.000 bytes según
    `wc -c`) y `docs/CONTEXTO-CORTO.md` no pasa de 160 líneas ni de 20 KB (20.000 bytes), porque
    lo leen todas las conversaciones de la app. Se actualizan sustituyendo la línea vieja, no
-   añadiendo otra debajo.
-   **Al marcar una fila HECHA**, en esa misma subida, la sesión los mide (`wc -c docs/COLA.md`,
-   `wc -l -c docs/CONTEXTO-CORTO.md`) y, si alguno se pasa, lo reduce:
-   - **Cola:** las filas HECHA, SUSTITUIDA y DESCARTADA salen de la cola y pasan, con su texto
-     completo, a `docs/HISTORIA.md`. Las HECHA de hoy y de ayer se quedan un día más, porque el
-     Centro de mando saca de la cola su «Terminado hoy». Las notas largas de las filas que siguen
-     vivas se dejan en una línea; el detalle va a la instrucción de la fila. La forma de la cola
-     (apartado 7) no cambia: el Centro de mando la lee así.
-   - **Resumen:** lo que ya es pasado va a `docs/HISTORIA.md`; el detalle largo que sigue vigente
-     va a `docs/CONTEXTO.md`, y en el resumen queda una línea que remite a él.
-   - No se pierde ningún texto. Si `docs/HISTORIA.md` o `docs/CONTEXTO.md` no existen, se crean.
-   - Si no se puede bajar del límite sin quitar algo vigente, se dice en la nota de la fila.
+   añadiendo otra debajo. **Al marcar una fila HECHA**, en esa misma subida, la sesión los mide
+   (`wc -c docs/COLA.md`, `wc -l -c docs/CONTEXTO-CORTO.md`). Solo si alguno se pasa, lo reduce
+   como dice el apartado 2 de `CUANDO-HACE-FALTA.md` (abajo).
 6. **La cola no pierde filas y está bien escrita.** Antes de escribir en `docs/COLA.md`, baja
    `main` y toca solo tu fila. Antes de subir el cambio, pasa el programa que comprueba la forma
    de las filas (apartado 7) y que no falta ninguna de las que había sin cerrar:
@@ -183,6 +165,15 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
    se queda EN CURSO y se dice en el mensaje final.
 8. Tiempo: no se estima. Al marcar HECHA se escribe la hora de Madrid: `HECHA (26-oct-2026 14:05)`;
    lo que tardó cada fila sale de esa hora y de la subida que la marcó EN CURSO.
+
+**`CUANDO-HACE-FALTA.md`** guarda lo que solo se necesita a veces (apartados 3.D, 5.1, 5.5 y
+10). Las apps no tienen copia: se baja cuando toca y se lee solo el apartado que se nombra.
+
+    curl -fsSL https://raw.githubusercontent.com/fmargon780/metodo-reglas/main/CUANDO-HACE-FALTA.md -o /tmp/CUANDO-HACE-FALTA.md
+
+Si no se puede bajar: la pasada completa va justo antes de subir, como en una app corta; la cola y
+el resumen se quedan sin reducir; un arreglo, o lo que diga la persona, se trata como una fila más.
+Se dice en una línea en la nota de la fila.
 
 ## 6. Segundo revisor, comprobar y publicar
 
@@ -224,7 +215,8 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
 8. Mensaje final para la persona: qué ha quedado hecho, en una línea; qué no se pudo ver; y lo que
    dice «Qué mirar al terminar» de la instrucción, una cosa por línea. Si la instrucción no tiene
    ese apartado (instrucciones de antes del 7-nov-2026), la sesión lo escribe en ella a partir de
-   lo hecho, en la subida que marca HECHA.
+   lo hecho, en la subida que marca HECHA. Acaba con: «Si al mirarlo algo falla, dímelo aquí y
+   sigo en esta misma sesión.»
 
 ## 7. La cola: cómo se escribe una fila y qué estados hay
 
@@ -238,7 +230,8 @@ y para el Centro de mando.
 - Una fila por línea. Empieza y acaba con una barra y tiene cuatro casillas, ni una más ni una
   menos. Dentro de una casilla no se escribe ninguna barra; un salto de línea se escribe `<br>`.
 - **Nº:** el siguiente al más alto de la cola. No se cambia nunca.
-- **Instrucción:** el texto de la idea o el enlace a `docs/<nº>-<nombre>.md`.
+- **Instrucción:** el texto de la idea o el enlace a `docs/<nº>-<nombre>.md`. Si la fila arregla
+  lo que hizo otra, el texto lo dice: «(de la fila N)» (apartado 3.D).
 - **Estado:** empieza por el estado, en mayúsculas, y detrás su fecha entre paréntesis:
   `PENDIENTE (15-nov-2026)`. Lo que haya que añadir va dentro del paréntesis, detrás de « · »:
   `IDEA (15-nov-2026 · tropiezo)`. Un motivo corto va después, tras dos puntos:
@@ -307,6 +300,12 @@ clave, dar un permiso, decidir algo):
    devuelve sola a las pendientes cuando la fila M está HECHA.
 
 Es el único camino: no se usan `docs/TE-TOCA.md` ni marcas en las notas.
+
+## 10. La persona contesta en la misma sesión
+
+Si después del mensaje final la persona escribe que algo falla («ya lo he probado, falla esto»), la
+sesión sigue, sin pedir una conversación nueva: apartado 4 de `CUANDO-HACE-FALTA.md` (cómo se baja:
+final del apartado 5).
 
 ## Lecciones para Claude Code (de todas las apps)
 
