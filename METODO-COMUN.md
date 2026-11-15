@@ -165,9 +165,15 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
      va a `docs/CONTEXTO.md`, y en el resumen queda una línea que remite a él.
    - No se pierde ningún texto. Si `docs/HISTORIA.md` o `docs/CONTEXTO.md` no existen, se crean.
    - Si no se puede bajar del límite sin quitar algo vigente, se dice en la nota de la fila.
-6. **La cola no pierde filas.** Antes de escribir en `docs/COLA.md`, baja `main` y toca solo tu
-   fila. Después de subir, comprueba que siguen todas las filas que había. Si falta alguna, la
-   recuperas antes de seguir.
+6. **La cola no pierde filas y está bien escrita.** Antes de escribir en `docs/COLA.md`, baja
+   `main` y toca solo tu fila. Antes de subir el cambio, pasa el programa que comprueba la forma
+   de las filas (apartado 7) y que no falta ninguna de las que había sin cerrar:
+
+       curl -fsSL https://raw.githubusercontent.com/fmargon780/metodo-reglas/main/comprueba-cola.js -o /tmp/comprueba-cola.js && node /tmp/comprueba-cola.js docs/COLA.md
+
+   Lo que diga que hay que arreglar se arregla antes de subir. Si no se puede bajar o no hay
+   `node`, se sube igual y se dice en una línea en la nota de la fila. Después de subir, comprueba
+   que siguen todas las filas que había; si falta alguna, la recuperas antes de seguir.
 7. **Cómo se sube** (salvo que el `CLAUDE.md` de la app diga otra cosa, por ejemplo una rama por
    fila): directo a `main`, con `git pull --rebase origin main` y `git push origin HEAD:main`. Si
    git rechaza la subida a `main`, se sube a la rama `claude/...`, se abre una petición de cambios
@@ -240,7 +246,8 @@ y para el Centro de mando.
 - **Notas:** lo demás, en una línea. El detalle va a la instrucción.
 - Una fila nueva se añade al final. Cambiar el orden es mover la línea entera.
 
-**Los estados.** Son estos y ninguno más. Una fila con otro estado no se ve en el Centro de mando.
+**Los estados.** Son estos y ninguno más. Una fila con otro estado, o mal escrita, sale en
+«Filas que no entiendo» del Centro de mando, y el programa del apartado 5.6 no la deja subir.
 
 | Estado | Qué quiere decir | Quién lo pone |
 |---|---|---|
