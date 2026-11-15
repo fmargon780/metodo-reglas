@@ -236,7 +236,9 @@ y para el Centro de mando.
   `PENDIENTE (15-nov-2026)`. Lo que haya que añadir va dentro del paréntesis, detrás de « · »:
   `IDEA (15-nov-2026 · tropiezo)`. Un motivo corto va después, tras dos puntos:
   `DESCARTADA (15-nov-2026): ya lo hace la app`.
-- **Notas:** lo demás, en una línea. El detalle va a la instrucción.
+- **Notas:** lo demás, en una línea. El detalle va a la instrucción. Si la fila no se puede
+  programar hasta que otra esté publicada, la nota dice «Necesita la fila N»: el Centro de mando no
+  la lanza mientras la N no esté HECHA (o cerrada).
 - Una fila nueva se añade al final. Cambiar el orden es mover la línea entera.
 
 **Los estados.** Son estos y ninguno más. Una fila con otro estado, o mal escrita, sale en
@@ -262,7 +264,7 @@ y para el Centro de mando.
 
 **No son trabajo para Claude Code:** IDEA, DECIDIDA, EN TEMA, EN DISEÑO, APLAZADA con fecha por
 llegar, PENDIENTE con «no antes del» una fecha por llegar, ESPERA A LA IDEA cuya idea no esté
-HECHA, ESPERA TU VISTAZO y todas las cerradas.
+HECHA, una fila con «Necesita la fila N» y la N sin HECHA, ESPERA TU VISTAZO y todas las cerradas.
 
 ## 8. Series de filas
 
