@@ -31,6 +31,8 @@ pasa de 160 líneas o de 20 KB. Se hace en esa misma subida.
   completo, al final de `docs/HISTORIA.md`. Se quedan en la cola, porque el Centro de mando o el
   buzón de soporte las necesitan:
   - las HECHA de hoy y de ayer (el Centro de mando saca de ahí «Hechas hoy»);
+  - las HECHA sin «mirada» en la nota, hasta siete días después de su fecha (el Centro de mando las
+    enseña en «Para probar»);
   - la fila de número más alto, si está cerrada (las filas nuevas cogen el número siguiente al más
     alto de la cola; sin ella se repetirían números);
   - los avisos de usuarios del botón de soporte, todos, y en las apps sin avisos, la fila que puso
