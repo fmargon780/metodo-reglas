@@ -254,8 +254,8 @@ y para el Centro de mando.
 | `APLAZADA hasta <fecha>` | Lista, pero no se coge antes de esa fecha | Claude o la persona |
 | `ESPERA A LA IDEA M` | No puede terminarse hasta que la fila M esté HECHA (apartado 9) | Claude Code |
 | `EN CURSO` | Una sesión la está programando | Claude Code |
-| `ESPERA TU VISTAZO` | Programada y a la vista en una dirección de prueba; no se publica hasta que la persona la mire. Solo en las apps cuyo `CLAUDE.md` trabaja así | Claude Code |
-| `HECHA (fecha hora)` | En `main`, publicada y comprobada. Cuando la persona la mira y está bien, la nota lleva «mirada (fecha)» (botón «Bien» del Centro de mando); hasta entonces, y como mucho siete días, sale en «Para probar» | Claude Code |
+| `ESPERA TU VISTAZO` | Programada y a la vista en una dirección de prueba; no se publica hasta que Claude en el chat (o la persona) la mire. Solo en las apps cuyo `CLAUDE.md` trabaja así | Claude Code |
+| `HECHA (fecha hora)` | En `main`, publicada y comprobada. Cuando Claude en el chat o la persona la mira y está bien, la nota lleva «mirada (fecha)» o «mirada (fecha, por Claude)» (botón «Bien» del Centro de mando); hasta entonces, y como mucho siete días, sale en «Para probar» | Claude Code |
 | `SIN PUBLICACIÓN COMPROBADA` | Terminada, pero no se pudo comprobar la publicación (apartado 6.5) | Claude Code |
 | `BLOQUEADA` | Parada. La nota empieza por «PREGUNTA PARA <nombre>», «ATASCO PARA CLAUDE» o «FALTA UN PERMISO» (apartado 3) | Claude Code |
 | `DEVUELTA` | La persona miró la app y no es lo acordado. La nota dice qué falla | La persona, o Claude en su nombre |
