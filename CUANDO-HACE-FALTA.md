@@ -32,7 +32,7 @@ pasa de 160 líneas o de 20 KB. Se hace en esa misma subida.
   buzón de soporte las necesitan:
   - las HECHA de hoy y de ayer (el Centro de mando saca de ahí «Hechas hoy»);
   - las HECHA sin «mirada» en la nota, hasta siete días después de su fecha (el Centro de mando las
-    enseña en «Para probar»);
+    enseña como «falta comprobarla»);
   - la fila de número más alto, si está cerrada (las filas nuevas cogen el número siguiente al más
     alto de la cola; sin ella se repetirían números);
   - los avisos de usuarios del botón de soporte, todos, y en las apps sin avisos, la fila que puso
@@ -57,16 +57,3 @@ otras sesiones.
 Si este sería el tercero, no se programa. La fila pasa a BLOQUEADA con «ATASCO PARA CLAUDE: tercer
 arreglo del mismo fallo (filas …); hay que mirarlo de otra forma», y en la nota, en pocas líneas,
 qué intentó cada arreglo y qué se sabe del fallo. Sigue como en `METODO-COMUN.md` 3.B.
-
-## 4. La persona contesta en la misma sesión (`METODO-COMUN.md` 10)
-
-Lo que la persona diga después del mensaje final cuenta como encargo.
-
-1. Si falla algo que hizo la fila: la fila pasa a DEVUELTA, con lo que dijo la persona en la nota,
-   tal cual, y la sesión la retoma.
-2. Si es otro fallo, algo que no funciona como estaba previsto: se añade al final una fila nueva,
-   «Tarea pequeña (de la fila N): <lo que dijo la persona, tal cual>», y la sesión la hace.
-3. Si lo que pide cambia lo que ve o hace la usuaria y no es un fallo, no se programa: se añade
-   como IDEA, con sus palabras, y se le dice que se diseña en una conversación.
-4. Antes de cada vuelta, el apartado 3. Cada vuelta es una fila como cualquier otra: EN CURSO,
-   publicada, comprobada y HECHA.
