@@ -146,9 +146,13 @@ Las demás decisiones técnicas las toma la sesión y las deja escritas en la no
    como dice el apartado 2 de `CUANDO-HACE-FALTA.md` (abajo).
 6. **La cola no pierde filas y está bien escrita.** Antes de escribir en `docs/COLA.md`, baja
    `main` y toca solo tu fila. Antes de subir el cambio, pasa el programa que comprueba la forma
-   de las filas (apartado 7) y que no falta ninguna de las que había sin cerrar:
+   de las filas (apartado 7) y que no falta ninguna de las que había sin cerrar. **En dos órdenes
+   separadas, una detrás de otra, sin mezclar nada más** (el sistema bloquea la orden larga que baja
+   y ejecuta de golpe, 19-nov-2026):
 
-       curl -fsSL https://raw.githubusercontent.com/fmargon780/metodo-reglas/main/comprueba-cola.js -o /tmp/comprueba-cola.js && node /tmp/comprueba-cola.js docs/COLA.md
+       curl -fsSL https://raw.githubusercontent.com/fmargon780/metodo-reglas/main/comprueba-cola.js -o /tmp/comprueba-cola.js
+
+       node /tmp/comprueba-cola.js docs/COLA.md
 
    Lo que diga que hay que arreglar se arregla antes de subir. Si no se puede bajar o no hay
    `node`, se sube igual y se dice en una línea en la nota de la fila. Después de subir, comprueba
