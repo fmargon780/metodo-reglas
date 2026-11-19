@@ -19,8 +19,9 @@ minutos. La frontera se mira siempre con la última medida.
 - Durante la fila, solo las pruebas de lo tocado y las fijas que obligue `CLAUDE.md`; no se repite
   la pasada completa antes de subir. Si la sesión hace varias filas seguidas, una sola pasada, al
   principio. Si en el día no se lanza ninguna fila, no hay pasada.
-- El mensaje final de la primera fila del día empieza con «Pasada completa del día: <minutos> min,
-  <sin fallos | con N fallos, arreglo apuntado el primero>.»; las demás no la mencionan.
+- El resultado («Pasada completa del día: <minutos> min, <sin fallos | con N fallos, arreglo
+  apuntado el primero>.») va en la nota de la fila y en `docs/PASADA-DIARIA.md`, no en el mensaje
+  final, que es solo la frase de `METODO-COMUN.md` 6.8; las demás filas no la mencionan.
 
 ## 2. Reducir la cola y el resumen (`METODO-COMUN.md` 5.5)
 
