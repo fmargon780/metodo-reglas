@@ -24,8 +24,9 @@ minutos. La frontera se mira siempre con la última medida.
 
 ## 2. Reducir la cola y el resumen (`METODO-COMUN.md` 5.5)
 
-Solo cuando, al marcar una fila HECHA, `docs/COLA.md` pasa de 40 KB o `docs/CONTEXTO-CORTO.md`
-pasa de 160 líneas o de 20 KB. Se hace en esa misma subida.
+Solo cuando, al escribir en `docs/COLA.md` (al marcar una fila HECHA, o desde una conversación
+del chat), la cola pasa de 40 KB, o, al marcar una fila HECHA, `docs/CONTEXTO-CORTO.md` pasa de
+160 líneas o de 20 KB. Se hace en esa misma subida.
 
 - **Cola:** las filas HECHA, SUSTITUIDA y DESCARTADA salen de la cola y pasan, con su texto
   completo, al final de `docs/HISTORIA.md`. Se quedan en la cola, porque el Centro de mando o el
